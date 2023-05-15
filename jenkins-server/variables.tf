@@ -4,8 +4,10 @@ variable "instance_type" {}
 
 variable "user_data" {}
 
-variable "key_name" {}
+variable "tag" {}
 
-variable "public_key_path" {
-    default = "/c/Users/imaze/.ssh/jenkins-keys.pub"
-}
+# variable "key_name" {}
+
+# variable "public_key_path" {
+    # default = "/c/Users/imaze/.ssh/id_rsa.pub"
+# }

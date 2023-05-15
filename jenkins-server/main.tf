@@ -10,10 +10,10 @@ data "aws_ami" "instance_ami" {
   }
 }
 
-resource "aws_key_pair" "jserv_auth" {
-  key_name = var.key_name
-  public_key = file(var.public_key_path)
-}
+# resource "aws_key_pair" "jserv-auth" {
+#   key_name = var.key_name
+#   public_key = "mykeys.pub"
+# }
 
 #Create Jenkins server
 resource "aws_instance" "jenkins-server" {
@@ -21,7 +21,12 @@ ami           = data.aws_ami.instance_ami.id
 instance_type = var.instance_type
 associate_public_ip_address = true
 user_data = var.user_data
-key_name = aws_key_pair.jserv_auth.id
+# key_name  = aws_key_pair.jserv-auth.id
+
+tags = {
+    Name = var.tag
+# key_name = aws_key_pair.jserv_auth.id
+ }
 }
   
 
